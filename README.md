@@ -17,6 +17,7 @@ Image Height---4000 pixels---Exif IFD0---257---Exif IFD0
 YCbCr Positioning---Center of pixel array---Exif IFD0---531---Exif IFD0
 Resolution Unit---Inch---Exif IFD0---296---Exif IFD0
 Orientation---Top, left side (Horizontal / normal)---Exif IFD0---274---Exif IFD0
+
 Aperture Value---f/1.8---Exif SubIFD---37378---Exif SubIFD 光圈值	
 Scene Type---Directly photographed image---Exif SubIFD---41729---Exif SubIFD
 Exif Version---null---Exif SubIFD---36864---Exif SubIFD
@@ -146,6 +147,15 @@ Expected File Name Extension : jpg : File Type
 File Name : box.jpg : File
 File Size : 4587289 bytes : File
 File Modified Date : 星期三 一月 04 16:47:50 +08:00 2023 : File
+
+
+
+
+
+
+
+新增jpeg数据：PhotocJpeg(id=null, pid=2023010617003200000001, ppath=D:\githuby\PhotoCompare\pic\box.jpg, createTime=2023-01-06 17:00:32.392, updateTime=2023-01-06 17:00:32.392, undefindFields=nullNumber of Components、Component 1、Component 2、Component 3、Exposure Time、Sub-Sec Time、Date/Time Digitized、Y Resolution、Orientation、X Resolution、Resolution Unit、, fileName=null, expectedFileNameExtension=jpg, detectedFileTypeName=JPEG, detectedMimeType=image/jpeg, fileSize=null, fileModifiedDate=null, detectedFileTypeLongName=Joint Photographic Experts Group, compressionType=Baseline, dataPrecision=8 bits, imageHeight=4000, imageWidth=3000, xResolution=72 dots per inch, yResolution=72 dots per inch, imageWidthIfd0=3000, imageHeightIfd0=4000, ycbcrPositioning=Center of pixel array, resolutionUnit=Inch, orientation=Top, left side (Horizontal / normal), apertureValue=f/1.8, sceneType=Directly photographed image, exifVersion=null, exposureBiasValue=0 EV, exposureProgram=Program normal, colorSpace=sRGB, maxApertureValue=f/1.8, exifImageHeight=4000, exifImageWidth=3000, brightnessValue=1.69, flashpixVersion=1.00, whiteBalanceMode=Auto white balance, exposuremode=Auto exposure, exposuretime=null, flash=Flash did not fire, fNumber=f/1.8, isoSpeedRatings=240, componentsConfiguration=YCbCr, focalLength=4.7, focalLength35=25, shutterSpeedValue=1/99 sec, meteringMode=Center weighted average, sceneCaptureType=Standard, whiteBalance=D65, sensingMethod=(Not defined), datetimeOriginal=2023-01-04 16:14:50.0, subsectimeOriginal=345, datetimeDigitized=null, subsectimeDigitized=345, interoperabilityIndex=Recommended Exif Interoperability Rules (ExifR98), compression=JPEG (old-style), thumbnailOffset=732 bytes, thumbnailLength=21614 bytes, numberOfTables=4 Huffman tables)
+Creating a new SqlSession
 
 
 

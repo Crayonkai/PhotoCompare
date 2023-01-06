@@ -1,0 +1,1054 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jikaigg.mapper.PhotocJpegMapper">
+  <resultMap id="BaseResultMap" type="com.jikaigg.domain.PhotocJpeg">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="pid" jdbcType="VARCHAR" property="pid" />
+    <result column="ppath" jdbcType="VARCHAR" property="ppath" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="undefind_fields" jdbcType="VARCHAR" property="undefindFields" />
+    <result column="file_name" jdbcType="VARCHAR" property="fileName" />
+    <result column="expected_file_name_extension" jdbcType="VARCHAR" property="expectedFileNameExtension" />
+    <result column="detected_file_type_name" jdbcType="VARCHAR" property="detectedFileTypeName" />
+    <result column="detected_mime_type" jdbcType="VARCHAR" property="detectedMimeType" />
+    <result column="file_size" jdbcType="INTEGER" property="fileSize" />
+    <result column="file_modified_date" jdbcType="TIMESTAMP" property="fileModifiedDate" />
+    <result column="detected_file_type_long_name" jdbcType="VARCHAR" property="detectedFileTypeLongName" />
+    <result column="compression_type" jdbcType="VARCHAR" property="compressionType" />
+    <result column="data_precision" jdbcType="VARCHAR" property="dataPrecision" />
+    <result column="image_height" jdbcType="INTEGER" property="imageHeight" />
+    <result column="image_width" jdbcType="INTEGER" property="imageWidth" />
+    <result column="x_resolution" jdbcType="VARCHAR" property="xResolution" />
+    <result column="y_resolution" jdbcType="VARCHAR" property="yResolution" />
+    <result column="image_width_ifd0" jdbcType="INTEGER" property="imageWidthIfd0" />
+    <result column="image_height_ifd0" jdbcType="INTEGER" property="imageHeightIfd0" />
+    <result column="ycbcr_positioning" jdbcType="VARCHAR" property="ycbcrPositioning" />
+    <result column="resolution_unit" jdbcType="VARCHAR" property="resolutionUnit" />
+    <result column="orientation" jdbcType="VARCHAR" property="orientation" />
+    <result column="aperture_value" jdbcType="VARCHAR" property="apertureValue" />
+    <result column="scene_type" jdbcType="VARCHAR" property="sceneType" />
+    <result column="exif_version" jdbcType="VARCHAR" property="exifVersion" />
+    <result column="exposure_bias_value" jdbcType="VARCHAR" property="exposureBiasValue" />
+    <result column="exposure_program" jdbcType="VARCHAR" property="exposureProgram" />
+    <result column="color_space" jdbcType="VARCHAR" property="colorSpace" />
+    <result column="max_aperture_value" jdbcType="VARCHAR" property="maxApertureValue" />
+    <result column="exif_image_height" jdbcType="INTEGER" property="exifImageHeight" />
+    <result column="exif_image_width" jdbcType="INTEGER" property="exifImageWidth" />
+    <result column="brightness_value" jdbcType="DECIMAL" property="brightnessValue" />
+    <result column="flashpix_version" jdbcType="VARCHAR" property="flashpixVersion" />
+    <result column="white_balance_mode" jdbcType="VARCHAR" property="whiteBalanceMode" />
+    <result column="exposuremode" jdbcType="VARCHAR" property="exposuremode" />
+    <result column="exposuretime" jdbcType="DECIMAL" property="exposuretime" />
+    <result column="flash" jdbcType="VARCHAR" property="flash" />
+    <result column="f_number" jdbcType="VARCHAR" property="fNumber" />
+    <result column="iso_speed_ratings" jdbcType="INTEGER" property="isoSpeedRatings" />
+    <result column="components_configuration" jdbcType="VARCHAR" property="componentsConfiguration" />
+    <result column="focal_length" jdbcType="DECIMAL" property="focalLength" />
+    <result column="focal_length_35" jdbcType="DECIMAL" property="focalLength35" />
+    <result column="shutter_speed_value" jdbcType="VARCHAR" property="shutterSpeedValue" />
+    <result column="metering_mode" jdbcType="VARCHAR" property="meteringMode" />
+    <result column="scene_capture_type" jdbcType="VARCHAR" property="sceneCaptureType" />
+    <result column="white_balance" jdbcType="VARCHAR" property="whiteBalance" />
+    <result column="sensing_method" jdbcType="VARCHAR" property="sensingMethod" />
+    <result column="datetime_original" jdbcType="TIMESTAMP" property="datetimeOriginal" />
+    <result column="subsectime_original" jdbcType="INTEGER" property="subsectimeOriginal" />
+    <result column="datetime_digitized" jdbcType="TIMESTAMP" property="datetimeDigitized" />
+    <result column="subsectime_digitized" jdbcType="INTEGER" property="subsectimeDigitized" />
+    <result column="interoperability_index" jdbcType="VARCHAR" property="interoperabilityIndex" />
+    <result column="compression" jdbcType="VARCHAR" property="compression" />
+    <result column="thumbnail_offset" jdbcType="VARCHAR" property="thumbnailOffset" />
+    <result column="thumbnail_length" jdbcType="VARCHAR" property="thumbnailLength" />
+    <result column="number_of_tables" jdbcType="VARCHAR" property="numberOfTables" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, pid, ppath, create_time, update_time, undefind_fields, file_name, expected_file_name_extension, 
+    detected_file_type_name, detected_mime_type, file_size, file_modified_date, detected_file_type_long_name, 
+    compression_type, data_precision, image_height, image_width, x_resolution, y_resolution, 
+    image_width_ifd0, image_height_ifd0, ycbcr_positioning, resolution_unit, orientation, 
+    aperture_value, scene_type, exif_version, exposure_bias_value, exposure_program, 
+    color_space, max_aperture_value, exif_image_height, exif_image_width, brightness_value, 
+    flashpix_version, white_balance_mode, exposuremode, exposuretime, flash, f_number, 
+    iso_speed_ratings, components_configuration, focal_length, focal_length_35, shutter_speed_value, 
+    metering_mode, scene_capture_type, white_balance, sensing_method, datetime_original, 
+    subsectime_original, datetime_digitized, subsectime_digitized, interoperability_index, 
+    compression, thumbnail_offset, thumbnail_length, number_of_tables
+  </sql>
+  <select id="selectByExample" parameterType="com.jikaigg.domain.PhotocJpegExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from photoc_jpeg
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from photoc_jpeg
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from photoc_jpeg
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.jikaigg.domain.PhotocJpegExample">
+    delete from photoc_jpeg
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.jikaigg.domain.PhotocJpeg">
+    insert into photoc_jpeg (id, pid, ppath, 
+      create_time, update_time, undefind_fields, 
+      file_name, expected_file_name_extension, detected_file_type_name, 
+      detected_mime_type, file_size, file_modified_date, 
+      detected_file_type_long_name, compression_type, 
+      data_precision, image_height, image_width, 
+      x_resolution, y_resolution, image_width_ifd0, 
+      image_height_ifd0, ycbcr_positioning, resolution_unit, 
+      orientation, aperture_value, scene_type, 
+      exif_version, exposure_bias_value, exposure_program, 
+      color_space, max_aperture_value, exif_image_height, 
+      exif_image_width, brightness_value, flashpix_version, 
+      white_balance_mode, exposuremode, exposuretime, 
+      flash, f_number, iso_speed_ratings, 
+      components_configuration, focal_length, focal_length_35, 
+      shutter_speed_value, metering_mode, scene_capture_type, 
+      white_balance, sensing_method, datetime_original, 
+      subsectime_original, datetime_digitized, 
+      subsectime_digitized, interoperability_index, 
+      compression, thumbnail_offset, thumbnail_length, 
+      number_of_tables)
+    values (#{id,jdbcType=INTEGER}, #{pid,jdbcType=VARCHAR}, #{ppath,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{undefindFields,jdbcType=VARCHAR}, 
+      #{fileName,jdbcType=VARCHAR}, #{expectedFileNameExtension,jdbcType=VARCHAR}, #{detectedFileTypeName,jdbcType=VARCHAR}, 
+      #{detectedMimeType,jdbcType=VARCHAR}, #{fileSize,jdbcType=INTEGER}, #{fileModifiedDate,jdbcType=TIMESTAMP}, 
+      #{detectedFileTypeLongName,jdbcType=VARCHAR}, #{compressionType,jdbcType=VARCHAR}, 
+      #{dataPrecision,jdbcType=VARCHAR}, #{imageHeight,jdbcType=INTEGER}, #{imageWidth,jdbcType=INTEGER}, 
+      #{xResolution,jdbcType=VARCHAR}, #{yResolution,jdbcType=VARCHAR}, #{imageWidthIfd0,jdbcType=INTEGER}, 
+      #{imageHeightIfd0,jdbcType=INTEGER}, #{ycbcrPositioning,jdbcType=VARCHAR}, #{resolutionUnit,jdbcType=VARCHAR}, 
+      #{orientation,jdbcType=VARCHAR}, #{apertureValue,jdbcType=VARCHAR}, #{sceneType,jdbcType=VARCHAR}, 
+      #{exifVersion,jdbcType=VARCHAR}, #{exposureBiasValue,jdbcType=VARCHAR}, #{exposureProgram,jdbcType=VARCHAR}, 
+      #{colorSpace,jdbcType=VARCHAR}, #{maxApertureValue,jdbcType=VARCHAR}, #{exifImageHeight,jdbcType=INTEGER}, 
+      #{exifImageWidth,jdbcType=INTEGER}, #{brightnessValue,jdbcType=DECIMAL}, #{flashpixVersion,jdbcType=VARCHAR}, 
+      #{whiteBalanceMode,jdbcType=VARCHAR}, #{exposuremode,jdbcType=VARCHAR}, #{exposuretime,jdbcType=DECIMAL}, 
+      #{flash,jdbcType=VARCHAR}, #{fNumber,jdbcType=VARCHAR}, #{isoSpeedRatings,jdbcType=INTEGER}, 
+      #{componentsConfiguration,jdbcType=VARCHAR}, #{focalLength,jdbcType=DECIMAL}, #{focalLength35,jdbcType=DECIMAL}, 
+      #{shutterSpeedValue,jdbcType=VARCHAR}, #{meteringMode,jdbcType=VARCHAR}, #{sceneCaptureType,jdbcType=VARCHAR}, 
+      #{whiteBalance,jdbcType=VARCHAR}, #{sensingMethod,jdbcType=VARCHAR}, #{datetimeOriginal,jdbcType=TIMESTAMP}, 
+      #{subsectimeOriginal,jdbcType=INTEGER}, #{datetimeDigitized,jdbcType=TIMESTAMP}, 
+      #{subsectimeDigitized,jdbcType=INTEGER}, #{interoperabilityIndex,jdbcType=VARCHAR}, 
+      #{compression,jdbcType=VARCHAR}, #{thumbnailOffset,jdbcType=VARCHAR}, #{thumbnailLength,jdbcType=VARCHAR}, 
+      #{numberOfTables,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jikaigg.domain.PhotocJpeg">
+    insert into photoc_jpeg
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="pid != null">
+        pid,
+      </if>
+      <if test="ppath != null">
+        ppath,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="undefindFields != null">
+        undefind_fields,
+      </if>
+      <if test="fileName != null">
+        file_name,
+      </if>
+      <if test="expectedFileNameExtension != null">
+        expected_file_name_extension,
+      </if>
+      <if test="detectedFileTypeName != null">
+        detected_file_type_name,
+      </if>
+      <if test="detectedMimeType != null">
+        detected_mime_type,
+      </if>
+      <if test="fileSize != null">
+        file_size,
+      </if>
+      <if test="fileModifiedDate != null">
+        file_modified_date,
+      </if>
+      <if test="detectedFileTypeLongName != null">
+        detected_file_type_long_name,
+      </if>
+      <if test="compressionType != null">
+        compression_type,
+      </if>
+      <if test="dataPrecision != null">
+        data_precision,
+      </if>
+      <if test="imageHeight != null">
+        image_height,
+      </if>
+      <if test="imageWidth != null">
+        image_width,
+      </if>
+      <if test="xResolution != null">
+        x_resolution,
+      </if>
+      <if test="yResolution != null">
+        y_resolution,
+      </if>
+      <if test="imageWidthIfd0 != null">
+        image_width_ifd0,
+      </if>
+      <if test="imageHeightIfd0 != null">
+        image_height_ifd0,
+      </if>
+      <if test="ycbcrPositioning != null">
+        ycbcr_positioning,
+      </if>
+      <if test="resolutionUnit != null">
+        resolution_unit,
+      </if>
+      <if test="orientation != null">
+        orientation,
+      </if>
+      <if test="apertureValue != null">
+        aperture_value,
+      </if>
+      <if test="sceneType != null">
+        scene_type,
+      </if>
+      <if test="exifVersion != null">
+        exif_version,
+      </if>
+      <if test="exposureBiasValue != null">
+        exposure_bias_value,
+      </if>
+      <if test="exposureProgram != null">
+        exposure_program,
+      </if>
+      <if test="colorSpace != null">
+        color_space,
+      </if>
+      <if test="maxApertureValue != null">
+        max_aperture_value,
+      </if>
+      <if test="exifImageHeight != null">
+        exif_image_height,
+      </if>
+      <if test="exifImageWidth != null">
+        exif_image_width,
+      </if>
+      <if test="brightnessValue != null">
+        brightness_value,
+      </if>
+      <if test="flashpixVersion != null">
+        flashpix_version,
+      </if>
+      <if test="whiteBalanceMode != null">
+        white_balance_mode,
+      </if>
+      <if test="exposuremode != null">
+        exposuremode,
+      </if>
+      <if test="exposuretime != null">
+        exposuretime,
+      </if>
+      <if test="flash != null">
+        flash,
+      </if>
+      <if test="fNumber != null">
+        f_number,
+      </if>
+      <if test="isoSpeedRatings != null">
+        iso_speed_ratings,
+      </if>
+      <if test="componentsConfiguration != null">
+        components_configuration,
+      </if>
+      <if test="focalLength != null">
+        focal_length,
+      </if>
+      <if test="focalLength35 != null">
+        focal_length_35,
+      </if>
+      <if test="shutterSpeedValue != null">
+        shutter_speed_value,
+      </if>
+      <if test="meteringMode != null">
+        metering_mode,
+      </if>
+      <if test="sceneCaptureType != null">
+        scene_capture_type,
+      </if>
+      <if test="whiteBalance != null">
+        white_balance,
+      </if>
+      <if test="sensingMethod != null">
+        sensing_method,
+      </if>
+      <if test="datetimeOriginal != null">
+        datetime_original,
+      </if>
+      <if test="subsectimeOriginal != null">
+        subsectime_original,
+      </if>
+      <if test="datetimeDigitized != null">
+        datetime_digitized,
+      </if>
+      <if test="subsectimeDigitized != null">
+        subsectime_digitized,
+      </if>
+      <if test="interoperabilityIndex != null">
+        interoperability_index,
+      </if>
+      <if test="compression != null">
+        compression,
+      </if>
+      <if test="thumbnailOffset != null">
+        thumbnail_offset,
+      </if>
+      <if test="thumbnailLength != null">
+        thumbnail_length,
+      </if>
+      <if test="numberOfTables != null">
+        number_of_tables,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="pid != null">
+        #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="ppath != null">
+        #{ppath,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="undefindFields != null">
+        #{undefindFields,jdbcType=VARCHAR},
+      </if>
+      <if test="fileName != null">
+        #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="expectedFileNameExtension != null">
+        #{expectedFileNameExtension,jdbcType=VARCHAR},
+      </if>
+      <if test="detectedFileTypeName != null">
+        #{detectedFileTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="detectedMimeType != null">
+        #{detectedMimeType,jdbcType=VARCHAR},
+      </if>
+      <if test="fileSize != null">
+        #{fileSize,jdbcType=INTEGER},
+      </if>
+      <if test="fileModifiedDate != null">
+        #{fileModifiedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="detectedFileTypeLongName != null">
+        #{detectedFileTypeLongName,jdbcType=VARCHAR},
+      </if>
+      <if test="compressionType != null">
+        #{compressionType,jdbcType=VARCHAR},
+      </if>
+      <if test="dataPrecision != null">
+        #{dataPrecision,jdbcType=VARCHAR},
+      </if>
+      <if test="imageHeight != null">
+        #{imageHeight,jdbcType=INTEGER},
+      </if>
+      <if test="imageWidth != null">
+        #{imageWidth,jdbcType=INTEGER},
+      </if>
+      <if test="xResolution != null">
+        #{xResolution,jdbcType=VARCHAR},
+      </if>
+      <if test="yResolution != null">
+        #{yResolution,jdbcType=VARCHAR},
+      </if>
+      <if test="imageWidthIfd0 != null">
+        #{imageWidthIfd0,jdbcType=INTEGER},
+      </if>
+      <if test="imageHeightIfd0 != null">
+        #{imageHeightIfd0,jdbcType=INTEGER},
+      </if>
+      <if test="ycbcrPositioning != null">
+        #{ycbcrPositioning,jdbcType=VARCHAR},
+      </if>
+      <if test="resolutionUnit != null">
+        #{resolutionUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="orientation != null">
+        #{orientation,jdbcType=VARCHAR},
+      </if>
+      <if test="apertureValue != null">
+        #{apertureValue,jdbcType=VARCHAR},
+      </if>
+      <if test="sceneType != null">
+        #{sceneType,jdbcType=VARCHAR},
+      </if>
+      <if test="exifVersion != null">
+        #{exifVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="exposureBiasValue != null">
+        #{exposureBiasValue,jdbcType=VARCHAR},
+      </if>
+      <if test="exposureProgram != null">
+        #{exposureProgram,jdbcType=VARCHAR},
+      </if>
+      <if test="colorSpace != null">
+        #{colorSpace,jdbcType=VARCHAR},
+      </if>
+      <if test="maxApertureValue != null">
+        #{maxApertureValue,jdbcType=VARCHAR},
+      </if>
+      <if test="exifImageHeight != null">
+        #{exifImageHeight,jdbcType=INTEGER},
+      </if>
+      <if test="exifImageWidth != null">
+        #{exifImageWidth,jdbcType=INTEGER},
+      </if>
+      <if test="brightnessValue != null">
+        #{brightnessValue,jdbcType=DECIMAL},
+      </if>
+      <if test="flashpixVersion != null">
+        #{flashpixVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="whiteBalanceMode != null">
+        #{whiteBalanceMode,jdbcType=VARCHAR},
+      </if>
+      <if test="exposuremode != null">
+        #{exposuremode,jdbcType=VARCHAR},
+      </if>
+      <if test="exposuretime != null">
+        #{exposuretime,jdbcType=DECIMAL},
+      </if>
+      <if test="flash != null">
+        #{flash,jdbcType=VARCHAR},
+      </if>
+      <if test="fNumber != null">
+        #{fNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="isoSpeedRatings != null">
+        #{isoSpeedRatings,jdbcType=INTEGER},
+      </if>
+      <if test="componentsConfiguration != null">
+        #{componentsConfiguration,jdbcType=VARCHAR},
+      </if>
+      <if test="focalLength != null">
+        #{focalLength,jdbcType=DECIMAL},
+      </if>
+      <if test="focalLength35 != null">
+        #{focalLength35,jdbcType=DECIMAL},
+      </if>
+      <if test="shutterSpeedValue != null">
+        #{shutterSpeedValue,jdbcType=VARCHAR},
+      </if>
+      <if test="meteringMode != null">
+        #{meteringMode,jdbcType=VARCHAR},
+      </if>
+      <if test="sceneCaptureType != null">
+        #{sceneCaptureType,jdbcType=VARCHAR},
+      </if>
+      <if test="whiteBalance != null">
+        #{whiteBalance,jdbcType=VARCHAR},
+      </if>
+      <if test="sensingMethod != null">
+        #{sensingMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="datetimeOriginal != null">
+        #{datetimeOriginal,jdbcType=TIMESTAMP},
+      </if>
+      <if test="subsectimeOriginal != null">
+        #{subsectimeOriginal,jdbcType=INTEGER},
+      </if>
+      <if test="datetimeDigitized != null">
+        #{datetimeDigitized,jdbcType=TIMESTAMP},
+      </if>
+      <if test="subsectimeDigitized != null">
+        #{subsectimeDigitized,jdbcType=INTEGER},
+      </if>
+      <if test="interoperabilityIndex != null">
+        #{interoperabilityIndex,jdbcType=VARCHAR},
+      </if>
+      <if test="compression != null">
+        #{compression,jdbcType=VARCHAR},
+      </if>
+      <if test="thumbnailOffset != null">
+        #{thumbnailOffset,jdbcType=VARCHAR},
+      </if>
+      <if test="thumbnailLength != null">
+        #{thumbnailLength,jdbcType=VARCHAR},
+      </if>
+      <if test="numberOfTables != null">
+        #{numberOfTables,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.jikaigg.domain.PhotocJpegExample" resultType="java.lang.Long">
+    select count(*) from photoc_jpeg
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update photoc_jpeg
+    <set>
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=INTEGER},
+      </if>
+      <if test="row.pid != null">
+        pid = #{row.pid,jdbcType=VARCHAR},
+      </if>
+      <if test="row.ppath != null">
+        ppath = #{row.ppath,jdbcType=VARCHAR},
+      </if>
+      <if test="row.createTime != null">
+        create_time = #{row.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="row.updateTime != null">
+        update_time = #{row.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="row.undefindFields != null">
+        undefind_fields = #{row.undefindFields,jdbcType=VARCHAR},
+      </if>
+      <if test="row.fileName != null">
+        file_name = #{row.fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="row.expectedFileNameExtension != null">
+        expected_file_name_extension = #{row.expectedFileNameExtension,jdbcType=VARCHAR},
+      </if>
+      <if test="row.detectedFileTypeName != null">
+        detected_file_type_name = #{row.detectedFileTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="row.detectedMimeType != null">
+        detected_mime_type = #{row.detectedMimeType,jdbcType=VARCHAR},
+      </if>
+      <if test="row.fileSize != null">
+        file_size = #{row.fileSize,jdbcType=INTEGER},
+      </if>
+      <if test="row.fileModifiedDate != null">
+        file_modified_date = #{row.fileModifiedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="row.detectedFileTypeLongName != null">
+        detected_file_type_long_name = #{row.detectedFileTypeLongName,jdbcType=VARCHAR},
+      </if>
+      <if test="row.compressionType != null">
+        compression_type = #{row.compressionType,jdbcType=VARCHAR},
+      </if>
+      <if test="row.dataPrecision != null">
+        data_precision = #{row.dataPrecision,jdbcType=VARCHAR},
+      </if>
+      <if test="row.imageHeight != null">
+        image_height = #{row.imageHeight,jdbcType=INTEGER},
+      </if>
+      <if test="row.imageWidth != null">
+        image_width = #{row.imageWidth,jdbcType=INTEGER},
+      </if>
+      <if test="row.xResolution != null">
+        x_resolution = #{row.xResolution,jdbcType=VARCHAR},
+      </if>
+      <if test="row.yResolution != null">
+        y_resolution = #{row.yResolution,jdbcType=VARCHAR},
+      </if>
+      <if test="row.imageWidthIfd0 != null">
+        image_width_ifd0 = #{row.imageWidthIfd0,jdbcType=INTEGER},
+      </if>
+      <if test="row.imageHeightIfd0 != null">
+        image_height_ifd0 = #{row.imageHeightIfd0,jdbcType=INTEGER},
+      </if>
+      <if test="row.ycbcrPositioning != null">
+        ycbcr_positioning = #{row.ycbcrPositioning,jdbcType=VARCHAR},
+      </if>
+      <if test="row.resolutionUnit != null">
+        resolution_unit = #{row.resolutionUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="row.orientation != null">
+        orientation = #{row.orientation,jdbcType=VARCHAR},
+      </if>
+      <if test="row.apertureValue != null">
+        aperture_value = #{row.apertureValue,jdbcType=VARCHAR},
+      </if>
+      <if test="row.sceneType != null">
+        scene_type = #{row.sceneType,jdbcType=VARCHAR},
+      </if>
+      <if test="row.exifVersion != null">
+        exif_version = #{row.exifVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="row.exposureBiasValue != null">
+        exposure_bias_value = #{row.exposureBiasValue,jdbcType=VARCHAR},
+      </if>
+      <if test="row.exposureProgram != null">
+        exposure_program = #{row.exposureProgram,jdbcType=VARCHAR},
+      </if>
+      <if test="row.colorSpace != null">
+        color_space = #{row.colorSpace,jdbcType=VARCHAR},
+      </if>
+      <if test="row.maxApertureValue != null">
+        max_aperture_value = #{row.maxApertureValue,jdbcType=VARCHAR},
+      </if>
+      <if test="row.exifImageHeight != null">
+        exif_image_height = #{row.exifImageHeight,jdbcType=INTEGER},
+      </if>
+      <if test="row.exifImageWidth != null">
+        exif_image_width = #{row.exifImageWidth,jdbcType=INTEGER},
+      </if>
+      <if test="row.brightnessValue != null">
+        brightness_value = #{row.brightnessValue,jdbcType=DECIMAL},
+      </if>
+      <if test="row.flashpixVersion != null">
+        flashpix_version = #{row.flashpixVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="row.whiteBalanceMode != null">
+        white_balance_mode = #{row.whiteBalanceMode,jdbcType=VARCHAR},
+      </if>
+      <if test="row.exposuremode != null">
+        exposuremode = #{row.exposuremode,jdbcType=VARCHAR},
+      </if>
+      <if test="row.exposuretime != null">
+        exposuretime = #{row.exposuretime,jdbcType=DECIMAL},
+      </if>
+      <if test="row.flash != null">
+        flash = #{row.flash,jdbcType=VARCHAR},
+      </if>
+      <if test="row.fNumber != null">
+        f_number = #{row.fNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="row.isoSpeedRatings != null">
+        iso_speed_ratings = #{row.isoSpeedRatings,jdbcType=INTEGER},
+      </if>
+      <if test="row.componentsConfiguration != null">
+        components_configuration = #{row.componentsConfiguration,jdbcType=VARCHAR},
+      </if>
+      <if test="row.focalLength != null">
+        focal_length = #{row.focalLength,jdbcType=DECIMAL},
+      </if>
+      <if test="row.focalLength35 != null">
+        focal_length_35 = #{row.focalLength35,jdbcType=DECIMAL},
+      </if>
+      <if test="row.shutterSpeedValue != null">
+        shutter_speed_value = #{row.shutterSpeedValue,jdbcType=VARCHAR},
+      </if>
+      <if test="row.meteringMode != null">
+        metering_mode = #{row.meteringMode,jdbcType=VARCHAR},
+      </if>
+      <if test="row.sceneCaptureType != null">
+        scene_capture_type = #{row.sceneCaptureType,jdbcType=VARCHAR},
+      </if>
+      <if test="row.whiteBalance != null">
+        white_balance = #{row.whiteBalance,jdbcType=VARCHAR},
+      </if>
+      <if test="row.sensingMethod != null">
+        sensing_method = #{row.sensingMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="row.datetimeOriginal != null">
+        datetime_original = #{row.datetimeOriginal,jdbcType=TIMESTAMP},
+      </if>
+      <if test="row.subsectimeOriginal != null">
+        subsectime_original = #{row.subsectimeOriginal,jdbcType=INTEGER},
+      </if>
+      <if test="row.datetimeDigitized != null">
+        datetime_digitized = #{row.datetimeDigitized,jdbcType=TIMESTAMP},
+      </if>
+      <if test="row.subsectimeDigitized != null">
+        subsectime_digitized = #{row.subsectimeDigitized,jdbcType=INTEGER},
+      </if>
+      <if test="row.interoperabilityIndex != null">
+        interoperability_index = #{row.interoperabilityIndex,jdbcType=VARCHAR},
+      </if>
+      <if test="row.compression != null">
+        compression = #{row.compression,jdbcType=VARCHAR},
+      </if>
+      <if test="row.thumbnailOffset != null">
+        thumbnail_offset = #{row.thumbnailOffset,jdbcType=VARCHAR},
+      </if>
+      <if test="row.thumbnailLength != null">
+        thumbnail_length = #{row.thumbnailLength,jdbcType=VARCHAR},
+      </if>
+      <if test="row.numberOfTables != null">
+        number_of_tables = #{row.numberOfTables,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update photoc_jpeg
+    set id = #{row.id,jdbcType=INTEGER},
+      pid = #{row.pid,jdbcType=VARCHAR},
+      ppath = #{row.ppath,jdbcType=VARCHAR},
+      create_time = #{row.createTime,jdbcType=TIMESTAMP},
+      update_time = #{row.updateTime,jdbcType=TIMESTAMP},
+      undefind_fields = #{row.undefindFields,jdbcType=VARCHAR},
+      file_name = #{row.fileName,jdbcType=VARCHAR},
+      expected_file_name_extension = #{row.expectedFileNameExtension,jdbcType=VARCHAR},
+      detected_file_type_name = #{row.detectedFileTypeName,jdbcType=VARCHAR},
+      detected_mime_type = #{row.detectedMimeType,jdbcType=VARCHAR},
+      file_size = #{row.fileSize,jdbcType=INTEGER},
+      file_modified_date = #{row.fileModifiedDate,jdbcType=TIMESTAMP},
+      detected_file_type_long_name = #{row.detectedFileTypeLongName,jdbcType=VARCHAR},
+      compression_type = #{row.compressionType,jdbcType=VARCHAR},
+      data_precision = #{row.dataPrecision,jdbcType=VARCHAR},
+      image_height = #{row.imageHeight,jdbcType=INTEGER},
+      image_width = #{row.imageWidth,jdbcType=INTEGER},
+      x_resolution = #{row.xResolution,jdbcType=VARCHAR},
+      y_resolution = #{row.yResolution,jdbcType=VARCHAR},
+      image_width_ifd0 = #{row.imageWidthIfd0,jdbcType=INTEGER},
+      image_height_ifd0 = #{row.imageHeightIfd0,jdbcType=INTEGER},
+      ycbcr_positioning = #{row.ycbcrPositioning,jdbcType=VARCHAR},
+      resolution_unit = #{row.resolutionUnit,jdbcType=VARCHAR},
+      orientation = #{row.orientation,jdbcType=VARCHAR},
+      aperture_value = #{row.apertureValue,jdbcType=VARCHAR},
+      scene_type = #{row.sceneType,jdbcType=VARCHAR},
+      exif_version = #{row.exifVersion,jdbcType=VARCHAR},
+      exposure_bias_value = #{row.exposureBiasValue,jdbcType=VARCHAR},
+      exposure_program = #{row.exposureProgram,jdbcType=VARCHAR},
+      color_space = #{row.colorSpace,jdbcType=VARCHAR},
+      max_aperture_value = #{row.maxApertureValue,jdbcType=VARCHAR},
+      exif_image_height = #{row.exifImageHeight,jdbcType=INTEGER},
+      exif_image_width = #{row.exifImageWidth,jdbcType=INTEGER},
+      brightness_value = #{row.brightnessValue,jdbcType=DECIMAL},
+      flashpix_version = #{row.flashpixVersion,jdbcType=VARCHAR},
+      white_balance_mode = #{row.whiteBalanceMode,jdbcType=VARCHAR},
+      exposuremode = #{row.exposuremode,jdbcType=VARCHAR},
+      exposuretime = #{row.exposuretime,jdbcType=DECIMAL},
+      flash = #{row.flash,jdbcType=VARCHAR},
+      f_number = #{row.fNumber,jdbcType=VARCHAR},
+      iso_speed_ratings = #{row.isoSpeedRatings,jdbcType=INTEGER},
+      components_configuration = #{row.componentsConfiguration,jdbcType=VARCHAR},
+      focal_length = #{row.focalLength,jdbcType=DECIMAL},
+      focal_length_35 = #{row.focalLength35,jdbcType=DECIMAL},
+      shutter_speed_value = #{row.shutterSpeedValue,jdbcType=VARCHAR},
+      metering_mode = #{row.meteringMode,jdbcType=VARCHAR},
+      scene_capture_type = #{row.sceneCaptureType,jdbcType=VARCHAR},
+      white_balance = #{row.whiteBalance,jdbcType=VARCHAR},
+      sensing_method = #{row.sensingMethod,jdbcType=VARCHAR},
+      datetime_original = #{row.datetimeOriginal,jdbcType=TIMESTAMP},
+      subsectime_original = #{row.subsectimeOriginal,jdbcType=INTEGER},
+      datetime_digitized = #{row.datetimeDigitized,jdbcType=TIMESTAMP},
+      subsectime_digitized = #{row.subsectimeDigitized,jdbcType=INTEGER},
+      interoperability_index = #{row.interoperabilityIndex,jdbcType=VARCHAR},
+      compression = #{row.compression,jdbcType=VARCHAR},
+      thumbnail_offset = #{row.thumbnailOffset,jdbcType=VARCHAR},
+      thumbnail_length = #{row.thumbnailLength,jdbcType=VARCHAR},
+      number_of_tables = #{row.numberOfTables,jdbcType=VARCHAR}
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jikaigg.domain.PhotocJpeg">
+    update photoc_jpeg
+    <set>
+      <if test="pid != null">
+        pid = #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="ppath != null">
+        ppath = #{ppath,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="undefindFields != null">
+        undefind_fields = #{undefindFields,jdbcType=VARCHAR},
+      </if>
+      <if test="fileName != null">
+        file_name = #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="expectedFileNameExtension != null">
+        expected_file_name_extension = #{expectedFileNameExtension,jdbcType=VARCHAR},
+      </if>
+      <if test="detectedFileTypeName != null">
+        detected_file_type_name = #{detectedFileTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="detectedMimeType != null">
+        detected_mime_type = #{detectedMimeType,jdbcType=VARCHAR},
+      </if>
+      <if test="fileSize != null">
+        file_size = #{fileSize,jdbcType=INTEGER},
+      </if>
+      <if test="fileModifiedDate != null">
+        file_modified_date = #{fileModifiedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="detectedFileTypeLongName != null">
+        detected_file_type_long_name = #{detectedFileTypeLongName,jdbcType=VARCHAR},
+      </if>
+      <if test="compressionType != null">
+        compression_type = #{compressionType,jdbcType=VARCHAR},
+      </if>
+      <if test="dataPrecision != null">
+        data_precision = #{dataPrecision,jdbcType=VARCHAR},
+      </if>
+      <if test="imageHeight != null">
+        image_height = #{imageHeight,jdbcType=INTEGER},
+      </if>
+      <if test="imageWidth != null">
+        image_width = #{imageWidth,jdbcType=INTEGER},
+      </if>
+      <if test="xResolution != null">
+        x_resolution = #{xResolution,jdbcType=VARCHAR},
+      </if>
+      <if test="yResolution != null">
+        y_resolution = #{yResolution,jdbcType=VARCHAR},
+      </if>
+      <if test="imageWidthIfd0 != null">
+        image_width_ifd0 = #{imageWidthIfd0,jdbcType=INTEGER},
+      </if>
+      <if test="imageHeightIfd0 != null">
+        image_height_ifd0 = #{imageHeightIfd0,jdbcType=INTEGER},
+      </if>
+      <if test="ycbcrPositioning != null">
+        ycbcr_positioning = #{ycbcrPositioning,jdbcType=VARCHAR},
+      </if>
+      <if test="resolutionUnit != null">
+        resolution_unit = #{resolutionUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="orientation != null">
+        orientation = #{orientation,jdbcType=VARCHAR},
+      </if>
+      <if test="apertureValue != null">
+        aperture_value = #{apertureValue,jdbcType=VARCHAR},
+      </if>
+      <if test="sceneType != null">
+        scene_type = #{sceneType,jdbcType=VARCHAR},
+      </if>
+      <if test="exifVersion != null">
+        exif_version = #{exifVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="exposureBiasValue != null">
+        exposure_bias_value = #{exposureBiasValue,jdbcType=VARCHAR},
+      </if>
+      <if test="exposureProgram != null">
+        exposure_program = #{exposureProgram,jdbcType=VARCHAR},
+      </if>
+      <if test="colorSpace != null">
+        color_space = #{colorSpace,jdbcType=VARCHAR},
+      </if>
+      <if test="maxApertureValue != null">
+        max_aperture_value = #{maxApertureValue,jdbcType=VARCHAR},
+      </if>
+      <if test="exifImageHeight != null">
+        exif_image_height = #{exifImageHeight,jdbcType=INTEGER},
+      </if>
+      <if test="exifImageWidth != null">
+        exif_image_width = #{exifImageWidth,jdbcType=INTEGER},
+      </if>
+      <if test="brightnessValue != null">
+        brightness_value = #{brightnessValue,jdbcType=DECIMAL},
+      </if>
+      <if test="flashpixVersion != null">
+        flashpix_version = #{flashpixVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="whiteBalanceMode != null">
+        white_balance_mode = #{whiteBalanceMode,jdbcType=VARCHAR},
+      </if>
+      <if test="exposuremode != null">
+        exposuremode = #{exposuremode,jdbcType=VARCHAR},
+      </if>
+      <if test="exposuretime != null">
+        exposuretime = #{exposuretime,jdbcType=DECIMAL},
+      </if>
+      <if test="flash != null">
+        flash = #{flash,jdbcType=VARCHAR},
+      </if>
+      <if test="fNumber != null">
+        f_number = #{fNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="isoSpeedRatings != null">
+        iso_speed_ratings = #{isoSpeedRatings,jdbcType=INTEGER},
+      </if>
+      <if test="componentsConfiguration != null">
+        components_configuration = #{componentsConfiguration,jdbcType=VARCHAR},
+      </if>
+      <if test="focalLength != null">
+        focal_length = #{focalLength,jdbcType=DECIMAL},
+      </if>
+      <if test="focalLength35 != null">
+        focal_length_35 = #{focalLength35,jdbcType=DECIMAL},
+      </if>
+      <if test="shutterSpeedValue != null">
+        shutter_speed_value = #{shutterSpeedValue,jdbcType=VARCHAR},
+      </if>
+      <if test="meteringMode != null">
+        metering_mode = #{meteringMode,jdbcType=VARCHAR},
+      </if>
+      <if test="sceneCaptureType != null">
+        scene_capture_type = #{sceneCaptureType,jdbcType=VARCHAR},
+      </if>
+      <if test="whiteBalance != null">
+        white_balance = #{whiteBalance,jdbcType=VARCHAR},
+      </if>
+      <if test="sensingMethod != null">
+        sensing_method = #{sensingMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="datetimeOriginal != null">
+        datetime_original = #{datetimeOriginal,jdbcType=TIMESTAMP},
+      </if>
+      <if test="subsectimeOriginal != null">
+        subsectime_original = #{subsectimeOriginal,jdbcType=INTEGER},
+      </if>
+      <if test="datetimeDigitized != null">
+        datetime_digitized = #{datetimeDigitized,jdbcType=TIMESTAMP},
+      </if>
+      <if test="subsectimeDigitized != null">
+        subsectime_digitized = #{subsectimeDigitized,jdbcType=INTEGER},
+      </if>
+      <if test="interoperabilityIndex != null">
+        interoperability_index = #{interoperabilityIndex,jdbcType=VARCHAR},
+      </if>
+      <if test="compression != null">
+        compression = #{compression,jdbcType=VARCHAR},
+      </if>
+      <if test="thumbnailOffset != null">
+        thumbnail_offset = #{thumbnailOffset,jdbcType=VARCHAR},
+      </if>
+      <if test="thumbnailLength != null">
+        thumbnail_length = #{thumbnailLength,jdbcType=VARCHAR},
+      </if>
+      <if test="numberOfTables != null">
+        number_of_tables = #{numberOfTables,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jikaigg.domain.PhotocJpeg">
+    update photoc_jpeg
+    set pid = #{pid,jdbcType=VARCHAR},
+      ppath = #{ppath,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      undefind_fields = #{undefindFields,jdbcType=VARCHAR},
+      file_name = #{fileName,jdbcType=VARCHAR},
+      expected_file_name_extension = #{expectedFileNameExtension,jdbcType=VARCHAR},
+      detected_file_type_name = #{detectedFileTypeName,jdbcType=VARCHAR},
+      detected_mime_type = #{detectedMimeType,jdbcType=VARCHAR},
+      file_size = #{fileSize,jdbcType=INTEGER},
+      file_modified_date = #{fileModifiedDate,jdbcType=TIMESTAMP},
+      detected_file_type_long_name = #{detectedFileTypeLongName,jdbcType=VARCHAR},
+      compression_type = #{compressionType,jdbcType=VARCHAR},
+      data_precision = #{dataPrecision,jdbcType=VARCHAR},
+      image_height = #{imageHeight,jdbcType=INTEGER},
+      image_width = #{imageWidth,jdbcType=INTEGER},
+      x_resolution = #{xResolution,jdbcType=VARCHAR},
+      y_resolution = #{yResolution,jdbcType=VARCHAR},
+      image_width_ifd0 = #{imageWidthIfd0,jdbcType=INTEGER},
+      image_height_ifd0 = #{imageHeightIfd0,jdbcType=INTEGER},
+      ycbcr_positioning = #{ycbcrPositioning,jdbcType=VARCHAR},
+      resolution_unit = #{resolutionUnit,jdbcType=VARCHAR},
+      orientation = #{orientation,jdbcType=VARCHAR},
+      aperture_value = #{apertureValue,jdbcType=VARCHAR},
+      scene_type = #{sceneType,jdbcType=VARCHAR},
+      exif_version = #{exifVersion,jdbcType=VARCHAR},
+      exposure_bias_value = #{exposureBiasValue,jdbcType=VARCHAR},
+      exposure_program = #{exposureProgram,jdbcType=VARCHAR},
+      color_space = #{colorSpace,jdbcType=VARCHAR},
+      max_aperture_value = #{maxApertureValue,jdbcType=VARCHAR},
+      exif_image_height = #{exifImageHeight,jdbcType=INTEGER},
+      exif_image_width = #{exifImageWidth,jdbcType=INTEGER},
+      brightness_value = #{brightnessValue,jdbcType=DECIMAL},
+      flashpix_version = #{flashpixVersion,jdbcType=VARCHAR},
+      white_balance_mode = #{whiteBalanceMode,jdbcType=VARCHAR},
+      exposuremode = #{exposuremode,jdbcType=VARCHAR},
+      exposuretime = #{exposuretime,jdbcType=DECIMAL},
+      flash = #{flash,jdbcType=VARCHAR},
+      f_number = #{fNumber,jdbcType=VARCHAR},
+      iso_speed_ratings = #{isoSpeedRatings,jdbcType=INTEGER},
+      components_configuration = #{componentsConfiguration,jdbcType=VARCHAR},
+      focal_length = #{focalLength,jdbcType=DECIMAL},
+      focal_length_35 = #{focalLength35,jdbcType=DECIMAL},
+      shutter_speed_value = #{shutterSpeedValue,jdbcType=VARCHAR},
+      metering_mode = #{meteringMode,jdbcType=VARCHAR},
+      scene_capture_type = #{sceneCaptureType,jdbcType=VARCHAR},
+      white_balance = #{whiteBalance,jdbcType=VARCHAR},
+      sensing_method = #{sensingMethod,jdbcType=VARCHAR},
+      datetime_original = #{datetimeOriginal,jdbcType=TIMESTAMP},
+      subsectime_original = #{subsectimeOriginal,jdbcType=INTEGER},
+      datetime_digitized = #{datetimeDigitized,jdbcType=TIMESTAMP},
+      subsectime_digitized = #{subsectimeDigitized,jdbcType=INTEGER},
+      interoperability_index = #{interoperabilityIndex,jdbcType=VARCHAR},
+      compression = #{compression,jdbcType=VARCHAR},
+      thumbnail_offset = #{thumbnailOffset,jdbcType=VARCHAR},
+      thumbnail_length = #{thumbnailLength,jdbcType=VARCHAR},
+      number_of_tables = #{numberOfTables,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

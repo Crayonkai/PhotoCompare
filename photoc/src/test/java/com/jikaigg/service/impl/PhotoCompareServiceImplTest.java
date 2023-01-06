@@ -6,7 +6,7 @@ import com.drew.imaging.ImageProcessingException;
 import com.drew.metadata.Directory;
 import com.drew.metadata.Metadata;
 import com.drew.metadata.Tag;
-import com.jikaigg.utils.FileIteratorUtils;
+import com.jikaigg.utils.FileIteratorUtil;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -44,11 +44,11 @@ public class PhotoCompareServiceImplTest {
             for (Tag tag : directory.getTags()) {
 //                System.out.println("*************************");
 //                System.out.println(tag);
-//                System.out.println(tag.getTagName()+" : "
-//                        +tag.getDescription()+" : "
-//                        +tag.getDirectoryName()+" : "
-//                        +tag.getTagType()+" : "
-//                        +tag.getTagTypeHex());
+                System.out.println(tag.getTagName()+" : "
+                        +tag.getDescription()+" : "
+                        +tag.getDirectoryName()+" : "
+                        +tag.getTagType()+" : "
+                        +tag.getTagTypeHex());
             }
         }
     }
@@ -73,11 +73,19 @@ public class PhotoCompareServiceImplTest {
 
         byte[] b = new byte[3];
         file.read(b, 0, b.length);
-        String photo = FileIteratorUtils.bytesToHexString(b);
+        String photo = FileIteratorUtil.bytesToHexString(b);
         photo = photo.toUpperCase();
         System.out.println("头文件是：" + photo);
-        String ooo = FileIteratorUtils.checkType(photo);
+        String ooo = FileIteratorUtil.checkType(photo);
         System.out.println("后缀名是：" + ooo);
+    }
+
+    @Test
+    public void test5(){
+        String str = "a\\b\\vc\\d";
+        System.out.println(str);
+        String[] s = str.split("\\\\");
+        System.out.println(s[s.length-1]);
     }
 
 

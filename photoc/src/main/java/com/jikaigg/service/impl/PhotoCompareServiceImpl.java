@@ -4,17 +4,18 @@ import cn.hutool.core.util.StrUtil;
 import com.drew.imaging.ImageMetadataReader;
 import com.drew.metadata.Directory;
 import com.drew.metadata.Metadata;
-import com.jikaigg.domain.Photo;
-import com.jikaigg.domain.PhotoCJpegDto;
-import com.jikaigg.mapper.PhotoCJpegMapper;
+import com.jikaigg.domain.PhotocJpeg;
+import com.jikaigg.mapper.PhotocJpegMapper;
 import com.jikaigg.service.PhotoCompareService;
-import com.jikaigg.utils.FileIteratorUtils;
+import com.jikaigg.utils.FileIteratorUtil;
 import com.jikaigg.utils.JpegUtil;
+import com.jikaigg.utils.PidUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +24,7 @@ import java.util.List;
 public class PhotoCompareServiceImpl implements PhotoCompareService {
 
     @Autowired
-    private PhotoCJpegMapper photoCJpegMapper;
+    private PhotocJpegMapper photocJpegMapper;
 
     @Override
     public String savePhotoBefore(String path) {
@@ -35,11 +36,13 @@ public class PhotoCompareServiceImpl implements PhotoCompareService {
             }
             List<File> files = new ArrayList();
             // 获取所有文件
-            FileIteratorUtils.getAllFiles(file, files);
+            FileIteratorUtil.getAllFiles(file, files);
+            int count = 0;
             // 遍历文件列表获取文件属性
             for (File photoFile : files) {
+                count++;
                 // 判断图片格式
-                String type = FileIteratorUtils.convertType(photoFile);
+                String type = FileIteratorUtil.convertType(photoFile);
                 if (StrUtil.isBlank(type)) {
                     log.info("未获取到图片类型。");
                     return "未知图片错误";
@@ -49,7 +52,13 @@ public class PhotoCompareServiceImpl implements PhotoCompareService {
 
                 // 根据图片类型不同，获取出来的详细信息不同。分别作判断
                 if ("jpg".equalsIgnoreCase(type) || "jpeg".equalsIgnoreCase(type)) {
-                    PhotoCJpegDto photo = new PhotoCJpegDto();
+                    PhotocJpeg photo = new PhotocJpeg();
+                    photo.setPid(PidUtil.SerialPid(count));
+                    photo.setCreateTime(new Timestamp(System.currentTimeMillis()));
+                    photo.setUpdateTime(new Timestamp(System.currentTimeMillis()));
+                    photo.setPpath(photoFile.getPath());
+                    String[] split = photoFile.getPath().split("\\\\");
+                    photo.setFileName(split[split.length-1]);
                     // 分块赋值，比较清晰
                     for (Directory directory : metadata.getDirectories()) {
                         if ("jpg".equalsIgnoreCase(directory.getName()) || "jpeg".equalsIgnoreCase(directory.getName())) {
@@ -77,7 +86,8 @@ public class PhotoCompareServiceImpl implements PhotoCompareService {
                             log.info("不存在该文件块：{}", directory.getName());
                         }
                     }
-                    photoCJpegMapper.insert(photo);
+                    log.info("新增jpeg数据：{}",photo.toString());
+                    photocJpegMapper.insertSelective(photo);
                 } else if ("png".equalsIgnoreCase(type)) {
                     // TODO
                 } else if ("bmp".equalsIgnoreCase(type)) {
