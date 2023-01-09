@@ -12,12 +12,12 @@ public class FileIteratorUtil {
      * @param file
      * @param fileList
      */
-    public static void getAllFiles(File file, List<File> fileList) {
+    public static void getAllFiles(File file, List<String> fileList) {
         for (File listFile : file.listFiles()) {
             if (listFile.isDirectory()){
-                getAllFiles(file,fileList);
+                getAllFiles(listFile,fileList);
             }else {
-                fileList.add(listFile);
+                fileList.add(listFile.getPath());
             }
         }
     }
@@ -61,7 +61,7 @@ public class FileIteratorUtil {
      * 判断文件类型
      * @return 文件真实类型
      */
-    public static String convertType(File infile) throws IOException {
+    public static String convertType(String infile) throws IOException {
         FileInputStream file = new FileInputStream(infile);
         List<File> list = new ArrayList<>();
         System.out.println(list);
@@ -72,5 +72,22 @@ public class FileIteratorUtil {
         String type = FileIteratorUtil.checkType(photo);
         return type;
     }
+
+
+    /**
+     * 判断文件类型
+     * @return 文件真实类型
+     */
+    /*public static String convertType(File infile) throws IOException {
+        FileInputStream file = new FileInputStream(infile);
+        List<File> list = new ArrayList<>();
+        System.out.println(list);
+        byte[] b = new byte[3];
+        file.read(b, 0, b.length);
+        String photo = FileIteratorUtil.bytesToHexString(b);
+        photo = photo.toUpperCase();
+        String type = FileIteratorUtil.checkType(photo);
+        return type;
+    }*/
 
 }

@@ -4,7 +4,6 @@ import cn.hutool.core.util.StrUtil;
 import com.drew.metadata.Directory;
 import com.drew.metadata.Tag;
 import com.jikaigg.domain.PhotocJpeg;
-import com.jikaigg.domain.PhotocJpeg;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;

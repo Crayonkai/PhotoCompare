@@ -34,12 +34,13 @@ public class PhotoCompareServiceImpl implements PhotoCompareService {
                 log.info("目录为空");
                 return "目录为空";
             }
-            List<File> files = new ArrayList();
+            List<String> files = new ArrayList();
             // 获取所有文件
             FileIteratorUtil.getAllFiles(file, files);
+            log.info("共发现 {} 张图片" ,files.size());
             int count = 0;
             // 遍历文件列表获取文件属性
-            for (File photoFile : files) {
+            for (String photoFile : files) {
                 count++;
                 // 判断图片格式
                 String type = FileIteratorUtil.convertType(photoFile);
@@ -48,7 +49,7 @@ public class PhotoCompareServiceImpl implements PhotoCompareService {
                     return "未知图片错误";
                 }
                 // 获取metadata元数据
-                Metadata metadata = ImageMetadataReader.readMetadata(photoFile);
+                Metadata metadata = ImageMetadataReader.readMetadata(new File(photoFile));
 
                 // 根据图片类型不同，获取出来的详细信息不同。分别作判断
                 if ("jpg".equalsIgnoreCase(type) || "jpeg".equalsIgnoreCase(type)) {
@@ -56,9 +57,9 @@ public class PhotoCompareServiceImpl implements PhotoCompareService {
                     photo.setPid(PidUtil.SerialPid(count));
                     photo.setCreateTime(new Timestamp(System.currentTimeMillis()));
                     photo.setUpdateTime(new Timestamp(System.currentTimeMillis()));
-                    photo.setPpath(photoFile.getPath());
-                    String[] split = photoFile.getPath().split("\\\\");
-                    photo.setFileName(split[split.length-1]);
+                    photo.setPpath(photoFile);
+                    String[] split = photoFile.split("\\\\");
+                    photo.setFileName(split[split.length - 1]);
                     // 分块赋值，比较清晰
                     for (Directory directory : metadata.getDirectories()) {
                         if ("jpg".equalsIgnoreCase(directory.getName()) || "jpeg".equalsIgnoreCase(directory.getName())) {
@@ -86,7 +87,7 @@ public class PhotoCompareServiceImpl implements PhotoCompareService {
                             log.info("不存在该文件块：{}", directory.getName());
                         }
                     }
-                    log.info("新增jpeg数据：{}",photo.toString());
+                    log.info("新增jpeg数据：{}", photo.toString());
                     photocJpegMapper.insertSelective(photo);
                 } else if ("png".equalsIgnoreCase(type)) {
                     // TODO

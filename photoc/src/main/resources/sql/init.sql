@@ -44,7 +44,7 @@ CREATE TABLE `photoc_jpeg` (
     `f_number` varchar(10) NULL DEFAULT NULL COMMENT '拍照时的光圈F-number(F-stop)',
     `iso_speed_ratings` integer NULL DEFAULT NULL COMMENT 'CCD的感光度',
     `components_configuration` varchar(10) NULL DEFAULT NULL COMMENT '像素数据顺序',
-    `focal_length` decimal(4,2) NULL DEFAULT NULL COMMENT '镜头焦距长度',
+    `focal_length` decimal(6,2) NULL DEFAULT NULL COMMENT '镜头焦距长度',
     `focal_length_35` decimal(4,2) NULL DEFAULT NULL COMMENT ' ',
     `shutter_speed_value` varchar(10) NULL DEFAULT NULL COMMENT '快门速度',
     `metering_mode` varchar(25) NULL DEFAULT NULL COMMENT '曝光的测光方法',

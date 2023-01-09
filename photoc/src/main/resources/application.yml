@@ -12,3 +12,7 @@ server:
 mybatis:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+logging:
+  file:
+    path: D://githuby//PhotoCompare

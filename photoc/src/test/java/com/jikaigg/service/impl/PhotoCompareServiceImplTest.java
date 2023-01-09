@@ -36,7 +36,7 @@ public class PhotoCompareServiceImplTest {
     @Test
     public void test2() throws ImageProcessingException, IOException {
 //        File file = new File("D://githuby//PhotoCompare//pic//box.jpg");
-        FileInputStream file = new FileInputStream("D://githuby//PhotoCompare//pic//box.jpg");
+        FileInputStream file = new FileInputStream("D://githuby//PhotoCompare//pic//2L4A6339.jpg");
         Metadata metadata = ImageMetadataReader.readMetadata(file);
         for (Directory directory : metadata.getDirectories()) {
             System.out.println(directory.getName());
