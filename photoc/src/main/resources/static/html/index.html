@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ComparePhoto</title>
+</head>
+<body>
+<!--身份证正面-->
+<div class="photo" id="photo" enctype="multipart/form-data">
+            <input type="file" multiple="multiple" accept="image/*"
+                   onchange="getImg(event,'photo',1)" enctype="multipart/form-data" id="face" required/>
+</div>
+<script>
+    /** 获取照片 */
+    function getImg(e, eId, next) {
+        var imgFile = e.target.files[0];
+        var newImgFile = window.webkitURL.createObjectURL(imgFile);
+        document.getElementById("" + eId + "").style.backgroundImage = "url(" + newImgFile + ")";
+
+        if (next == 1) {
+            front = imgFile;
+        } else if (next == 2) {
+            back = imgFile;
+        } else if (next == 3) {
+            face = imgFile;
+        }
+    }
+    //ajax：
+    //将file文件转为formdata,Ajax传到后台
+    formData = new FormData();
+    formData.append('front', front);
+
+    // url: url,
+    //     type: 'POST',
+    //     cache: false,
+    //     data: formData,
+    //     processData: false,
+    //     contentType: false,
+</script>
+</body>
+</html>

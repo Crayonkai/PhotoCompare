@@ -13,11 +13,14 @@ import com.jikaigg.utils.PidUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.DigestUtils;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @Slf4j
@@ -87,6 +90,8 @@ public class PhotoCompareServiceImpl implements PhotoCompareService {
                             log.info("不存在该文件块：{}", directory.getName());
                         }
                     }
+                    String photomd5 = DigestUtils.md5DigestAsHex(new FileInputStream(photoFile));
+                    photo.setPhotoMd5(photomd5);
                     log.info("新增jpeg数据：{}", photo.toString());
                     photocJpegMapper.insertSelective(photo);
                 } else if ("png".equalsIgnoreCase(type)) {
@@ -104,4 +109,17 @@ public class PhotoCompareServiceImpl implements PhotoCompareService {
         }
 
     }
+
+    /**
+     * 根据pid查询一张图片
+     * @param pid
+     * @return
+     */
+    @Override
+    public String getByPId(String pid) {
+        Map<String , Object> photoc = photocJpegMapper.selectByPId(pid);
+        return null;
+    }
+
+
 }

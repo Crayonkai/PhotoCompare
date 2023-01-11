@@ -5,6 +5,7 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="pid" jdbcType="VARCHAR" property="pid" />
     <result column="ppath" jdbcType="VARCHAR" property="ppath" />
+    <result column="photo_md5" jdbcType="VARCHAR" property="photoMd5" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="undefind_fields" jdbcType="VARCHAR" property="undefindFields" />
@@ -120,17 +121,17 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, pid, ppath, create_time, update_time, undefind_fields, file_name, expected_file_name_extension, 
-    detected_file_type_name, detected_mime_type, file_size, file_modified_date, detected_file_type_long_name, 
-    compression_type, data_precision, image_height, image_width, x_resolution, y_resolution, 
-    image_width_ifd0, image_height_ifd0, ycbcr_positioning, resolution_unit, orientation, 
-    aperture_value, scene_type, exif_version, exposure_bias_value, exposure_program, 
-    color_space, max_aperture_value, exif_image_height, exif_image_width, brightness_value, 
-    flashpix_version, white_balance_mode, exposuremode, exposuretime, flash, f_number, 
-    iso_speed_ratings, components_configuration, focal_length, focal_length_35, shutter_speed_value, 
-    metering_mode, scene_capture_type, white_balance, sensing_method, datetime_original, 
-    subsectime_original, datetime_digitized, subsectime_digitized, interoperability_index, 
-    compression, thumbnail_offset, thumbnail_length, number_of_tables
+    id, pid, ppath, photo_md5, create_time, update_time, undefind_fields, file_name, 
+    expected_file_name_extension, detected_file_type_name, detected_mime_type, file_size, 
+    file_modified_date, detected_file_type_long_name, compression_type, data_precision, 
+    image_height, image_width, x_resolution, y_resolution, image_width_ifd0, image_height_ifd0, 
+    ycbcr_positioning, resolution_unit, orientation, aperture_value, scene_type, exif_version, 
+    exposure_bias_value, exposure_program, color_space, max_aperture_value, exif_image_height, 
+    exif_image_width, brightness_value, flashpix_version, white_balance_mode, exposuremode, 
+    exposuretime, flash, f_number, iso_speed_ratings, components_configuration, focal_length, 
+    focal_length_35, shutter_speed_value, metering_mode, scene_capture_type, white_balance, 
+    sensing_method, datetime_original, subsectime_original, datetime_digitized, subsectime_digitized, 
+    interoperability_index, compression, thumbnail_offset, thumbnail_length, number_of_tables
   </sql>
   <select id="selectByExample" parameterType="com.jikaigg.domain.PhotocJpegExample" resultMap="BaseResultMap">
     select
@@ -164,47 +165,47 @@
   </delete>
   <insert id="insert" parameterType="com.jikaigg.domain.PhotocJpeg">
     insert into photoc_jpeg (id, pid, ppath, 
-      create_time, update_time, undefind_fields, 
-      file_name, expected_file_name_extension, detected_file_type_name, 
-      detected_mime_type, file_size, file_modified_date, 
-      detected_file_type_long_name, compression_type, 
-      data_precision, image_height, image_width, 
-      x_resolution, y_resolution, image_width_ifd0, 
-      image_height_ifd0, ycbcr_positioning, resolution_unit, 
-      orientation, aperture_value, scene_type, 
-      exif_version, exposure_bias_value, exposure_program, 
-      color_space, max_aperture_value, exif_image_height, 
-      exif_image_width, brightness_value, flashpix_version, 
-      white_balance_mode, exposuremode, exposuretime, 
-      flash, f_number, iso_speed_ratings, 
-      components_configuration, focal_length, focal_length_35, 
-      shutter_speed_value, metering_mode, scene_capture_type, 
-      white_balance, sensing_method, datetime_original, 
-      subsectime_original, datetime_digitized, 
-      subsectime_digitized, interoperability_index, 
-      compression, thumbnail_offset, thumbnail_length, 
-      number_of_tables)
+      photo_md5, create_time, update_time, 
+      undefind_fields, file_name, expected_file_name_extension, 
+      detected_file_type_name, detected_mime_type, 
+      file_size, file_modified_date, detected_file_type_long_name, 
+      compression_type, data_precision, image_height, 
+      image_width, x_resolution, y_resolution, 
+      image_width_ifd0, image_height_ifd0, ycbcr_positioning, 
+      resolution_unit, orientation, aperture_value, 
+      scene_type, exif_version, exposure_bias_value, 
+      exposure_program, color_space, max_aperture_value, 
+      exif_image_height, exif_image_width, brightness_value, 
+      flashpix_version, white_balance_mode, exposuremode, 
+      exposuretime, flash, f_number, 
+      iso_speed_ratings, components_configuration, 
+      focal_length, focal_length_35, shutter_speed_value, 
+      metering_mode, scene_capture_type, white_balance, 
+      sensing_method, datetime_original, subsectime_original, 
+      datetime_digitized, subsectime_digitized, 
+      interoperability_index, compression, thumbnail_offset, 
+      thumbnail_length, number_of_tables)
     values (#{id,jdbcType=INTEGER}, #{pid,jdbcType=VARCHAR}, #{ppath,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{undefindFields,jdbcType=VARCHAR}, 
-      #{fileName,jdbcType=VARCHAR}, #{expectedFileNameExtension,jdbcType=VARCHAR}, #{detectedFileTypeName,jdbcType=VARCHAR}, 
-      #{detectedMimeType,jdbcType=VARCHAR}, #{fileSize,jdbcType=INTEGER}, #{fileModifiedDate,jdbcType=TIMESTAMP}, 
-      #{detectedFileTypeLongName,jdbcType=VARCHAR}, #{compressionType,jdbcType=VARCHAR}, 
-      #{dataPrecision,jdbcType=VARCHAR}, #{imageHeight,jdbcType=INTEGER}, #{imageWidth,jdbcType=INTEGER}, 
-      #{xResolution,jdbcType=VARCHAR}, #{yResolution,jdbcType=VARCHAR}, #{imageWidthIfd0,jdbcType=INTEGER}, 
-      #{imageHeightIfd0,jdbcType=INTEGER}, #{ycbcrPositioning,jdbcType=VARCHAR}, #{resolutionUnit,jdbcType=VARCHAR}, 
-      #{orientation,jdbcType=VARCHAR}, #{apertureValue,jdbcType=VARCHAR}, #{sceneType,jdbcType=VARCHAR}, 
-      #{exifVersion,jdbcType=VARCHAR}, #{exposureBiasValue,jdbcType=VARCHAR}, #{exposureProgram,jdbcType=VARCHAR}, 
-      #{colorSpace,jdbcType=VARCHAR}, #{maxApertureValue,jdbcType=VARCHAR}, #{exifImageHeight,jdbcType=INTEGER}, 
-      #{exifImageWidth,jdbcType=INTEGER}, #{brightnessValue,jdbcType=DECIMAL}, #{flashpixVersion,jdbcType=VARCHAR}, 
-      #{whiteBalanceMode,jdbcType=VARCHAR}, #{exposuremode,jdbcType=VARCHAR}, #{exposuretime,jdbcType=DECIMAL}, 
-      #{flash,jdbcType=VARCHAR}, #{fNumber,jdbcType=VARCHAR}, #{isoSpeedRatings,jdbcType=INTEGER}, 
-      #{componentsConfiguration,jdbcType=VARCHAR}, #{focalLength,jdbcType=DECIMAL}, #{focalLength35,jdbcType=DECIMAL}, 
-      #{shutterSpeedValue,jdbcType=VARCHAR}, #{meteringMode,jdbcType=VARCHAR}, #{sceneCaptureType,jdbcType=VARCHAR}, 
-      #{whiteBalance,jdbcType=VARCHAR}, #{sensingMethod,jdbcType=VARCHAR}, #{datetimeOriginal,jdbcType=TIMESTAMP}, 
-      #{subsectimeOriginal,jdbcType=INTEGER}, #{datetimeDigitized,jdbcType=TIMESTAMP}, 
-      #{subsectimeDigitized,jdbcType=INTEGER}, #{interoperabilityIndex,jdbcType=VARCHAR}, 
-      #{compression,jdbcType=VARCHAR}, #{thumbnailOffset,jdbcType=VARCHAR}, #{thumbnailLength,jdbcType=VARCHAR}, 
-      #{numberOfTables,jdbcType=VARCHAR})
+      #{photoMd5,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{undefindFields,jdbcType=VARCHAR}, #{fileName,jdbcType=VARCHAR}, #{expectedFileNameExtension,jdbcType=VARCHAR}, 
+      #{detectedFileTypeName,jdbcType=VARCHAR}, #{detectedMimeType,jdbcType=VARCHAR}, 
+      #{fileSize,jdbcType=INTEGER}, #{fileModifiedDate,jdbcType=TIMESTAMP}, #{detectedFileTypeLongName,jdbcType=VARCHAR}, 
+      #{compressionType,jdbcType=VARCHAR}, #{dataPrecision,jdbcType=VARCHAR}, #{imageHeight,jdbcType=INTEGER}, 
+      #{imageWidth,jdbcType=INTEGER}, #{xResolution,jdbcType=VARCHAR}, #{yResolution,jdbcType=VARCHAR}, 
+      #{imageWidthIfd0,jdbcType=INTEGER}, #{imageHeightIfd0,jdbcType=INTEGER}, #{ycbcrPositioning,jdbcType=VARCHAR}, 
+      #{resolutionUnit,jdbcType=VARCHAR}, #{orientation,jdbcType=VARCHAR}, #{apertureValue,jdbcType=VARCHAR}, 
+      #{sceneType,jdbcType=VARCHAR}, #{exifVersion,jdbcType=VARCHAR}, #{exposureBiasValue,jdbcType=VARCHAR}, 
+      #{exposureProgram,jdbcType=VARCHAR}, #{colorSpace,jdbcType=VARCHAR}, #{maxApertureValue,jdbcType=VARCHAR}, 
+      #{exifImageHeight,jdbcType=INTEGER}, #{exifImageWidth,jdbcType=INTEGER}, #{brightnessValue,jdbcType=DECIMAL}, 
+      #{flashpixVersion,jdbcType=VARCHAR}, #{whiteBalanceMode,jdbcType=VARCHAR}, #{exposuremode,jdbcType=VARCHAR}, 
+      #{exposuretime,jdbcType=DECIMAL}, #{flash,jdbcType=VARCHAR}, #{fNumber,jdbcType=VARCHAR}, 
+      #{isoSpeedRatings,jdbcType=INTEGER}, #{componentsConfiguration,jdbcType=VARCHAR}, 
+      #{focalLength,jdbcType=DECIMAL}, #{focalLength35,jdbcType=DECIMAL}, #{shutterSpeedValue,jdbcType=VARCHAR}, 
+      #{meteringMode,jdbcType=VARCHAR}, #{sceneCaptureType,jdbcType=VARCHAR}, #{whiteBalance,jdbcType=VARCHAR}, 
+      #{sensingMethod,jdbcType=VARCHAR}, #{datetimeOriginal,jdbcType=TIMESTAMP}, #{subsectimeOriginal,jdbcType=INTEGER}, 
+      #{datetimeDigitized,jdbcType=TIMESTAMP}, #{subsectimeDigitized,jdbcType=INTEGER}, 
+      #{interoperabilityIndex,jdbcType=VARCHAR}, #{compression,jdbcType=VARCHAR}, #{thumbnailOffset,jdbcType=VARCHAR}, 
+      #{thumbnailLength,jdbcType=VARCHAR}, #{numberOfTables,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.jikaigg.domain.PhotocJpeg">
     insert into photoc_jpeg
@@ -217,6 +218,9 @@
       </if>
       <if test="ppath != null">
         ppath,
+      </if>
+      <if test="photoMd5 != null">
+        photo_md5,
       </if>
       <if test="createTime != null">
         create_time,
@@ -393,6 +397,9 @@
       </if>
       <if test="ppath != null">
         #{ppath,jdbcType=VARCHAR},
+      </if>
+      <if test="photoMd5 != null">
+        #{photoMd5,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
@@ -579,6 +586,9 @@
       <if test="row.ppath != null">
         ppath = #{row.ppath,jdbcType=VARCHAR},
       </if>
+      <if test="row.photoMd5 != null">
+        photo_md5 = #{row.photoMd5,jdbcType=VARCHAR},
+      </if>
       <if test="row.createTime != null">
         create_time = #{row.createTime,jdbcType=TIMESTAMP},
       </if>
@@ -754,6 +764,7 @@
     set id = #{row.id,jdbcType=INTEGER},
       pid = #{row.pid,jdbcType=VARCHAR},
       ppath = #{row.ppath,jdbcType=VARCHAR},
+      photo_md5 = #{row.photoMd5,jdbcType=VARCHAR},
       create_time = #{row.createTime,jdbcType=TIMESTAMP},
       update_time = #{row.updateTime,jdbcType=TIMESTAMP},
       undefind_fields = #{row.undefindFields,jdbcType=VARCHAR},
@@ -821,6 +832,9 @@
       </if>
       <if test="ppath != null">
         ppath = #{ppath,jdbcType=VARCHAR},
+      </if>
+      <if test="photoMd5 != null">
+        photo_md5 = #{photoMd5,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
@@ -994,6 +1008,7 @@
     update photoc_jpeg
     set pid = #{pid,jdbcType=VARCHAR},
       ppath = #{ppath,jdbcType=VARCHAR},
+      photo_md5 = #{photoMd5,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
       undefind_fields = #{undefindFields,jdbcType=VARCHAR},
@@ -1051,4 +1066,17 @@
       number_of_tables = #{numberOfTables,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+
+  <select id="selectByPId" parameterType="java.lang.String" resultType="java.util.Map">
+    select
+    pid as pid,
+    ppath as ppath,
+    photo_md5 as photomd5,
+    update_time as updatetime,
+    file_name as filename,
+    file_size as filesize
+    from photoc_jpeg
+    where pid = #{pid,jdbcType=VARCHAR}
+  </select>
 </mapper>

@@ -20,4 +20,14 @@ public class PhotoCompareController {
         String message = photoCompareService.savePhotoBefore(photoPath);
         return new PhotoResult().success(message);
     }
+
+
+    @PostMapping("/queryOne")
+    public PhotoResult queryOnePhoto(@RequestParam("pid") String pid) {
+        log.info("获取pid为 {} 的图片", pid);
+        String message = photoCompareService.getByPId(pid);
+        return new PhotoResult().success(message);
+    }
+
+
 }

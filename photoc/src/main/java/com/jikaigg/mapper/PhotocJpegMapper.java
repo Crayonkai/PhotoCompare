@@ -3,6 +3,7 @@ package com.jikaigg.mapper;
 import com.jikaigg.domain.PhotocJpeg;
 import com.jikaigg.domain.PhotocJpegExample;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -30,4 +31,6 @@ public interface PhotocJpegMapper {
     int updateByPrimaryKeySelective(PhotocJpeg row);
 
     int updateByPrimaryKey(PhotocJpeg row);
+
+    Map<String,Object> selectByPId(String pid);
 }

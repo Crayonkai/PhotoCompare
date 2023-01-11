@@ -306,6 +306,76 @@ public class PhotocJpegExample {
             return (Criteria) this;
         }
 
+        public Criteria andPhotoMd5IsNull() {
+            addCriterion("photo_md5 is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPhotoMd5IsNotNull() {
+            addCriterion("photo_md5 is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPhotoMd5EqualTo(String value) {
+            addCriterion("photo_md5 =", value, "photoMd5");
+            return (Criteria) this;
+        }
+
+        public Criteria andPhotoMd5NotEqualTo(String value) {
+            addCriterion("photo_md5 <>", value, "photoMd5");
+            return (Criteria) this;
+        }
+
+        public Criteria andPhotoMd5GreaterThan(String value) {
+            addCriterion("photo_md5 >", value, "photoMd5");
+            return (Criteria) this;
+        }
+
+        public Criteria andPhotoMd5GreaterThanOrEqualTo(String value) {
+            addCriterion("photo_md5 >=", value, "photoMd5");
+            return (Criteria) this;
+        }
+
+        public Criteria andPhotoMd5LessThan(String value) {
+            addCriterion("photo_md5 <", value, "photoMd5");
+            return (Criteria) this;
+        }
+
+        public Criteria andPhotoMd5LessThanOrEqualTo(String value) {
+            addCriterion("photo_md5 <=", value, "photoMd5");
+            return (Criteria) this;
+        }
+
+        public Criteria andPhotoMd5Like(String value) {
+            addCriterion("photo_md5 like", value, "photoMd5");
+            return (Criteria) this;
+        }
+
+        public Criteria andPhotoMd5NotLike(String value) {
+            addCriterion("photo_md5 not like", value, "photoMd5");
+            return (Criteria) this;
+        }
+
+        public Criteria andPhotoMd5In(List<String> values) {
+            addCriterion("photo_md5 in", values, "photoMd5");
+            return (Criteria) this;
+        }
+
+        public Criteria andPhotoMd5NotIn(List<String> values) {
+            addCriterion("photo_md5 not in", values, "photoMd5");
+            return (Criteria) this;
+        }
+
+        public Criteria andPhotoMd5Between(String value1, String value2) {
+            addCriterion("photo_md5 between", value1, value2, "photoMd5");
+            return (Criteria) this;
+        }
+
+        public Criteria andPhotoMd5NotBetween(String value1, String value2) {
+            addCriterion("photo_md5 not between", value1, value2, "photoMd5");
+            return (Criteria) this;
+        }
+
         public Criteria andCreateTimeIsNull() {
             addCriterion("create_time is null");
             return (Criteria) this;

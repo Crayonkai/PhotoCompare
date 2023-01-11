@@ -17,6 +17,8 @@ public class PhotocJpeg {
 
     private String ppath;
 
+    private String photoMd5;
+
     private Timestamp createTime;
 
     private Timestamp updateTime;
