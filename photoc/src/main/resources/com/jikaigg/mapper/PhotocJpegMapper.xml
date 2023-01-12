@@ -1079,4 +1079,15 @@
     from photoc_jpeg
     where pid = #{pid,jdbcType=VARCHAR}
   </select>
+  <select id="selectByMd5" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+      pid ,
+      ppath ,
+      photo_md5 ,
+      file_name ,
+      file_size
+    from photoc_jpeg
+    where photo_md5 = #{photomd5,jdbcType=VARCHAR}
+    order by pid desc;
+  </select>
 </mapper>

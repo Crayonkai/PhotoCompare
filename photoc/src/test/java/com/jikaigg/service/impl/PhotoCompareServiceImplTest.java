@@ -41,7 +41,7 @@ public class PhotoCompareServiceImplTest {
     @Test
     public void test2() throws ImageProcessingException, IOException {
 //        File file = new File("D://githuby//PhotoCompare//pic//box.jpg");
-        FileInputStream file = new FileInputStream("D://githuby//PhotoCompare//pic//2L4A6339.jpg");
+        FileInputStream file = new FileInputStream("D://githuby//PhotoCompare//pic//test.png");
         Metadata metadata = ImageMetadataReader.readMetadata(file);
         for (Directory directory : metadata.getDirectories()) {
             System.out.println(directory.getName());
@@ -72,7 +72,7 @@ public class PhotoCompareServiceImplTest {
 
     @Test
     public void test4() throws IOException {
-        String path = "D://githuby//PhotoCompare//pic//box.png";
+        String path = "D://githuby//PhotoCompare//pic//test.png";
         FileInputStream file = new FileInputStream(path);
         List<File> list = new ArrayList<>();
         System.out.println(list);
@@ -96,7 +96,7 @@ public class PhotoCompareServiceImplTest {
 
     @Test
     public void test6() throws IOException, NoSuchAlgorithmException {
-        File file = new File("D://githuby//PhotoCompare//pic//box.jpg");
+        File file = new File("D://githuby//PhotoCompare//pic//test.png");
         FileInputStream fileInputStream = new FileInputStream(file);
         byte[] bytes = new byte[1024];
         MessageDigest md5 = MessageDigest.getInstance("MD5");

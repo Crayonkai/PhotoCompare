@@ -27,7 +27,7 @@
                              targetPackage="com.jikaigg.mapper"
                              targetProject="src/main/java"/>
 
-        <table tableName="photoc_jpeg" domainObjectName="PhotocJpeg" />
+        <table tableName="photoc_delete_log" domainObjectName="PhotocDeleteLog" />
 
     </context>
 </generatorConfiguration>

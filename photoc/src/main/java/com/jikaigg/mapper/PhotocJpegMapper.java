@@ -33,4 +33,6 @@ public interface PhotocJpegMapper {
     int updateByPrimaryKey(PhotocJpeg row);
 
     Map<String,Object> selectByPId(String pid);
+
+    List<PhotocJpeg> selectByMd5(String photomd5);
 }
