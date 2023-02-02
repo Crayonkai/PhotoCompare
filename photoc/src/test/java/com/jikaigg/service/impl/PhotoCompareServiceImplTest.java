@@ -9,6 +9,8 @@ import com.drew.metadata.Tag;
 import com.jikaigg.utils.FileIteratorUtil;
 import org.junit.jupiter.api.Test;
 import org.junit.platform.commons.util.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -17,11 +19,27 @@ import java.io.IOException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
+import static cn.hutool.poi.excel.sax.AttributeName.s;
+
+@SpringBootTest
 public class PhotoCompareServiceImplTest {
+    @Autowired
+    private PhotoCompareServiceImpl photoCompareService;
+
+    @Test
+    public void test() throws IOException {
+        long start = new Timestamp(System.currentTimeMillis()).getTime();
+        File file = new File("D://githuby//PhotoCompare//pic//box.jpg");
+        String name = file.getName();
+        long end = new Timestamp(System.currentTimeMillis()).getTime();
+        System.out.println(name);
+        System.out.println("耗时；"+(start-end));
+    }
 
     @Test
     public void test1() throws IOException {

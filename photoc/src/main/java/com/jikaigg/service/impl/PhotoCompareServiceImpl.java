@@ -20,12 +20,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.DigestUtils;
+import org.springframework.util.StopWatch;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -62,8 +62,13 @@ public class PhotoCompareServiceImpl implements PhotoCompareService {
                     log.info("未获取到图片类型。");
                     return "未知图片错误";
                 }
+//                StopWatch stopWatch = new StopWatch();
+//                stopWatch.start();
                 // 获取metadata元数据
                 Metadata metadata = ImageMetadataReader.readMetadata(new File(photoFile));
+//                stopWatch.stop();
+//                long totalTimeMillis = stopWatch.getTotalTimeMillis();
+//                System.out.println("读取文件耗时" + totalTimeMillis);
 
                 // 根据图片类型不同，获取出来的详细信息不同。分别作判断
                 if ("jpg".equalsIgnoreCase(type) || "jpeg".equalsIgnoreCase(type)) {
